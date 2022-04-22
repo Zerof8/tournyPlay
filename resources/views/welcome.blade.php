@@ -1,10 +1,10 @@
 <html>
 <head>
-    ...
     @livewireStyles
 </head>
 <body>
-    ...
     @livewireScripts
+    @livewire('navigation-menu')
+    @livewire('dashboard')
 </body>
 </html>
