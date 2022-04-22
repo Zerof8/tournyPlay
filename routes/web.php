@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,10 @@ Route::middleware([
 ]);
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [AuthenticatedSessionController::class, 'create']);
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->middleware('auth')->name('verification.notice');
 });
+
