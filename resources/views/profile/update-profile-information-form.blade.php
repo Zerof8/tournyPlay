@@ -52,6 +52,16 @@
             </div>
         @endif
 
+        <!-- Gender -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="gender" value="{{ __('Gender') }}" />
+            <select name="gender" class="w-auto border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" wire:model.defer="state.gender">
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Other</option>
+            </select>
+        </div>
+
         <!-- First name -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="first_name" value="{{ __('First name') }}" />
@@ -65,6 +75,8 @@
             <x-jet-input id="last_name" type="text" class="mt-1 block w-full" wire:model.defer="state.last_name" autocomplete="last_name" />
             <x-jet-input-error for="name" class="mt-2" />
         </div>
+
+
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
