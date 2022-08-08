@@ -84,6 +84,17 @@
             <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
         </div>
+
+        <!-- Phone number -->
+        <div class="col-span-6 sm:col-span-4">
+            <label class=" font-medium text-sm text-gray-700"> {{ __('Phone number') }}</label>
+            <x-tooltip>Start your phone number with "+" then enter you country code</x-tooltip>
+            <x-jet-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number"
+                         :value="old('phone_number')"
+                         wire:model.defer="state.phone_number" required
+                         autofocus placeholder="Optional"/>
+            <x-jet-input-error for="phone_number" class="mt-2" />
+        </div>
     </x-slot>
 
     <x-slot name="actions">
