@@ -23,11 +23,12 @@ Route::middleware([
     'verified'
 ]);
 
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->name('verification.notice');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [AuthenticatedSessionController::class, 'create']);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/email/verify', function () {
-        return view('auth.verify-email');
-    })->middleware('auth')->name('verification.notice');
 });
 
