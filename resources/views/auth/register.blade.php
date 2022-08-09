@@ -52,14 +52,6 @@
                              name="password_confirmation" required autocomplete="new-password"/>
             </div>
 
-            <div class="mt-4">
-                <label class=" font-medium text-sm text-gray-700"> {{ __('Phone number') }}</label>
-                <x-tooltip>Start your phone number with "+" before you enter your country code</x-tooltip>
-                <x-jet-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number"
-                             :value="old('phone_number')"
-                             autofocus/>
-            </div>
-
             <div class="mt-4" x-data='date_of_birth.max = new Date().toISOString().split("T")[0];'>
                 <x-jet-label for="date_of_birth" value="{{ __('Date of birth') }}"/>
                 <x-date-picker id="date_of_birth" class="block mt-1 w-full" name="date_of_birth" :value="old('date_of_birth')"
