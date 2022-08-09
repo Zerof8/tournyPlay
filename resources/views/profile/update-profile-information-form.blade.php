@@ -96,7 +96,7 @@
             <x-jet-input-error for="phone_number" class="mt-2" />
         </div>
 
-        <div class="col-span-6 sm:col-span-4" x-data='date_of_birth.max = new Date().toISOString().split("T")[0];'>
+        <div class="col-span-6 sm:col-span-4"  x-init='date_of_birth.max = new Date().toISOString().split("T")[0];'>
             <x-jet-label for="date_of_birth" value="{{ __('Date of birth') }}"/>
             <x-date-picker id="date_of_birth" class="block mt-1 w-full" name="date_of_birth" :value="old('date_of_birth')"
                            required wire:model.defer="state.date_of_birth"/>
