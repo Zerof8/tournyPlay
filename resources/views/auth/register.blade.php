@@ -54,10 +54,16 @@
 
             <div class="mt-4">
                 <label class=" font-medium text-sm text-gray-700"> {{ __('Phone number') }}</label>
-                <x-tooltip>Start your phone number with "+" then enter you country code</x-tooltip>
+                <x-tooltip>Start your phone number with "+" before you enter your country code</x-tooltip>
                 <x-jet-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number"
-                             :value="old('phone_number')" required
+                             :value="old('phone_number')"
                              autofocus/>
+            </div>
+
+            <div class="mt-4" x-data='date_of_birth.max = new Date().toISOString().split("T")[0];'>
+                <x-jet-label for="date_of_birth" value="{{ __('Date of birth') }}"/>
+                <x-date-picker id="date_of_birth" class="block mt-1 w-full" name="date_of_birth" :value="old('date_of_birth')"
+                             required/>
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -67,7 +73,7 @@
                             <x-jet-checkbox name="terms" id="terms"/>
 
                             <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                {!! __('I am over 18 years old and I agree to the :terms_of_service and :privacy_policy', [
                                         'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
                                         'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
                                 ]) !!}

@@ -13,6 +13,7 @@ return [
     |
     */
 
+    'older_than' => 'You must be at least 18 years old to access our services.',
     'phone' => 'The :attribute field contains an invalid number.',
     'accepted' => 'The :attribute must be accepted.',
     'accepted_if' => 'The :attribute must be accepted when :other is :value.',

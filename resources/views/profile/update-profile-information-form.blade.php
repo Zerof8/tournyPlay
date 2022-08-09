@@ -81,19 +81,26 @@
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="email" value="{{ __('Email') }}" />
-            <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
+            <x-jet-input id="email" type="text" class="mt-1 block w-full" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
         </div>
 
         <!-- Phone number -->
         <div class="col-span-6 sm:col-span-4">
             <label class=" font-medium text-sm text-gray-700"> {{ __('Phone number') }}</label>
-            <x-tooltip>Start your phone number with "+" then enter you country code</x-tooltip>
+            <x-tooltip>Start your phone number with "+" before you enter your country code</x-tooltip>
             <x-jet-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number"
                          :value="old('phone_number')"
                          wire:model.defer="state.phone_number" required
                          autofocus placeholder="Optional"/>
             <x-jet-input-error for="phone_number" class="mt-2" />
+        </div>
+
+        <div class="col-span-6 sm:col-span-4" x-data='date_of_birth.max = new Date().toISOString().split("T")[0];'>
+            <x-jet-label for="date_of_birth" value="{{ __('Date of birth') }}"/>
+            <x-date-picker id="date_of_birth" class="block mt-1 w-full" name="date_of_birth" :value="old('date_of_birth')"
+                           required wire:model.defer="state.date_of_birth"/>
+            <x-jet-input-error for="date_of_birth" class="mt-2" />
         </div>
     </x-slot>
 

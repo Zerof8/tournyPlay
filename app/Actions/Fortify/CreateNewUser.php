@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -21,10 +22,17 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        Validator::extend('olderThan', function($attribute, $value, $parameters)
+        {
+            $minAge = ( ! empty($parameters)) ? (int) $parameters[0] : 18;
+             return Carbon::now()->diff(new Carbon($value))->y >= $minAge;
+        });
+
         Validator::make($input, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'date_of_birth' => 'required|date|olderThan',
             'phone_number' => 'phone:auto',
             'password' => $this->passwordRules(),
             'gender' => ['required'],
@@ -37,7 +45,8 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'phone_number' => $input['phone_number'],
             'password' => Hash::make($input['password']),
-            'gender' => $input['gender']
+            'gender' => $input['gender'],
+            'date_of_birth' => $input['date_of_birth'],
         ]);
     }
 }
