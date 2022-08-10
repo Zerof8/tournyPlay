@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Privilege;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,15 +15,26 @@ class PrivilegeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('privileges')->insert([
-            'id' => 1,
-            'name' => 'Marketing',
-            'description' => 'M department'
-        ]);
-        DB::table('privileges')->insert([
-            'id' => 2,
-            'name' => 'support',
-            'description' => 's department'
-        ]);
+        //store the privileges in an array
+        $privileges = [
+            [
+                'id' => 1,
+                'name' => 'admin',
+                'description' => 'Administrator',
+            ],
+            [
+                'id' => 2,
+                'name' => 'employee',
+                'description' => 'Employee',
+            ],
+            [
+                'id' => 3,
+                'name' => 'user',
+                'description' => 'User',
+            ],
+        ];
+
+        //insert the privileges into the database
+        Privilege::insert($privileges);
     }
 }
