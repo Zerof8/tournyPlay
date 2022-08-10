@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Privilege;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-
 class PrivilegeSeeder extends Seeder
 {
     /**
