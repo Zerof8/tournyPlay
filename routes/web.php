@@ -16,6 +16,15 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 */
 
 
+$limiter = config('fortify.limiters.login');
+$twoFactorLimiter = config('fortify.limiters.two-factor');
+$verificationLimiter = config('fortify.limiters.verification', '6,1');
+
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+    ->middleware(array_filter([
+        'guest:'.config('fortify.guard'),
+        $limiter ? 'throttle:'.$limiter : null,
+    ]));
 
 Route::middleware([
     'auth:sanctum',
@@ -26,9 +35,10 @@ Route::middleware([
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->name('verification.notice');
+Route::get('/', [\App\Http\Controllers\Controller::class, 'index']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', [AuthenticatedSessionController::class, 'create']);
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 });
 
