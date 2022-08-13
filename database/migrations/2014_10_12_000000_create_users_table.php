@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->integer('role_id')->nullable();
+            $table->integer('credits')->default(0);
+            $table->boolean('is_subscribed')->default(false);
+            $table->date('subscription_ends_at')->nullable();
             $table->json('team_id')->nullable();
             $table->json('permission_level')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

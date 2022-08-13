@@ -32,6 +32,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'team_id',
         'permission_level',
         'gender',
+        'credits',
+        'is_subscribed',
+        'subscription_ends_at',
         'date_of_birth',
     ];
 
