@@ -1062,6 +1062,9 @@ select {
 .-mr-0 {
   margin-right: -0px;
 }
+.mr-2 {
+  margin-right: 0.5rem;
+}
 .-mr-2 {
   margin-right: -0.5rem;
 }
@@ -1103,9 +1106,6 @@ select {
 }
 .mt-5 {
   margin-top: 1.25rem;
-}
-.mr-2 {
-  margin-right: 0.5rem;
 }
 .-mr-1 {
   margin-right: -0.25rem;
@@ -1211,9 +1211,6 @@ select {
 }
 .w-48 {
   width: 12rem;
-}
-.w-40 {
-  width: 10rem;
 }
 .min-w-0 {
   min-width: 0px;
@@ -1633,13 +1630,13 @@ select {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
 }
-.text-\[\#E1B530\] {
-  --tw-text-opacity: 1;
-  color: rgb(225 181 48 / var(--tw-text-opacity));
-}
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+.text-\[\#E1B530\] {
+  --tw-text-opacity: 1;
+  color: rgb(225 181 48 / var(--tw-text-opacity));
 }
 .text-red-500 {
   --tw-text-opacity: 1;
@@ -1688,10 +1685,6 @@ select {
 .text-indigo-500 {
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
-}
-.text-\[\#50d71e\] {
-  --tw-text-opacity: 1;
-  color: rgb(80 215 30 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
@@ -1920,6 +1913,10 @@ select {
 .active\:bg-red-600:active {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+.active\:text-gray-700:active {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 .active\:text-gray-800:active {
   --tw-text-opacity: 1;
