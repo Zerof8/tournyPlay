@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
+use App\Http\Livewire\Subscriptions;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\Subscription\CreditsController;
@@ -36,10 +38,11 @@ Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->name('verification.notice');
 
-Route::get('/', [\App\Http\Controllers\Controller::class, 'index']);
+Route::get('/', [Controller::class, 'index']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/credits', [CreditsController::class, 'index'])->name('credits');
+    Route::get('/subscription', [Subscriptions::class, 'render'])->name('subscription');
 });
 

@@ -14,7 +14,7 @@ class Subscription extends Migration
     public function up()
     {
         Schema::create('subscriptions', function (Blueprint $table) {
-            $table->id('sub_id');
+            $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('type') -> nullable();
             $table->integer('length') -> nullable();
