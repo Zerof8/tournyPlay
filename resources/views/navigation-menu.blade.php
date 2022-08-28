@@ -89,6 +89,11 @@
                                 <x-jet-dropdown-link href="{{ route('credits') }}">
                                     {{ __('Credits') }}
                                 </x-jet-dropdown-link>
+
+                                <!-- subscription -->
+                                <x-jet-dropdown-link href="{{ route('subscription') }}">
+                                    {{ __('Subscription') }}
+                                </x-jet-dropdown-link>
                             </div>
                         </x-slot>
                     </x-jet-dropdown>
