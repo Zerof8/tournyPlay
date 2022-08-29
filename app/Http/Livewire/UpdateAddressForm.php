@@ -14,7 +14,6 @@ class UpdateAddressForm extends Component
     public $address;
     public $state;
     public $addressArray;
-    public $hasSubbed = false;
 
     protected $rules = [
         'country' => 'required',
@@ -39,7 +38,6 @@ class UpdateAddressForm extends Component
         $currentUser = User::find($userId);
         $currentUser->address = $this->addressArray;
         $currentUser->save();
-        $this->hasSubbed = true;
         return redirect()->route('subscription');
     }
 
