@@ -4,7 +4,9 @@
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Enter your billing address in order to buy credits or subscribe!') }}
+        <div class="text-red-500">
+            {{ __('In order to subscribe please enter your billing address') }}
+        </div>
     </x-slot>
 
     <x-slot name="form">
