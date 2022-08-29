@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
@@ -24,7 +25,7 @@ class UpdateAddressForm extends Component
 
     public function save()
     {
-       $this->validate();
+//       $this->validate();
         $this->emit('addressSaved');
         $this->addressArray = [
             'country' => $this->country,
@@ -33,8 +34,10 @@ class UpdateAddressForm extends Component
             'address' => $this->address,
             'state' => $this->state,
         ];
-        $user = auth()->user();
-        $user->address = $this->addressArray;
+        $userId = auth()->user()->id;
+        $currentUser = User::find($userId);
+        $currentUser->address = $this->addressArray;
+        $currentUser->save();
     }
 
     public function render()
