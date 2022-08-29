@@ -38,7 +38,11 @@ class UpdateAddressForm extends Component
         $currentUser = User::find($userId);
         $currentUser->address = $this->addressArray;
         $currentUser->save();
-        return redirect()->route('subscription');
+
+        if(route('subscription'))
+        {
+            return redirect()->route('subscription');
+        }
     }
 
     public function render()
