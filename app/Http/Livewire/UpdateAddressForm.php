@@ -14,6 +14,7 @@ class UpdateAddressForm extends Component
     public $address;
     public $state;
     public $addressArray;
+    public $hasSubbed = false;
 
     protected $rules = [
         'country' => 'required',
@@ -25,8 +26,8 @@ class UpdateAddressForm extends Component
 
     public function save()
     {
-//       $this->validate();
-        $this->emit('addressSaved');
+        //validate and store the form inside the array
+        $this->validate();
         $this->addressArray = [
             'country' => $this->country,
             'city' => $this->city,
@@ -38,6 +39,8 @@ class UpdateAddressForm extends Component
         $currentUser = User::find($userId);
         $currentUser->address = $this->addressArray;
         $currentUser->save();
+        $this->hasSubbed = true;
+        return redirect()->route('subscription');
     }
 
     public function render()
