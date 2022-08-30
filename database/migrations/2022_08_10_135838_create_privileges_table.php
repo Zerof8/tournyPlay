@@ -27,6 +27,6 @@ class CreatePrivilagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('privilages');
+        Schema::dropIfExists('privileges');
     }
 }
